@@ -51,13 +51,13 @@ The exported components and corresponding files in the u-blox ODIN-W2 driver is 
 For more info about the Bluetooth components see [documentation/readme_bluetooth.md](documentation/readme_bluetooth.md).
 
 ### Wi-Fi
-- **WLAN API**(cb\_wlan.h) - Scanning, connection setup, maintenance and termination
+- **OdinWiFiInterface.h** - C++ interface
+- cb\_wlan.h - C API for scanning, connection setup, maintenance and termination
 - cb\_wlan\_types.h - WLAN types
 - cb\_wlan\_target\_data.h - WLAN target that handles packetization of Ethernet frames
 - cb\_platform\_basic\_types.h - Common definitions for a GCC compatible compiler
 - cb\_port\_types.h - WLAN types
 - cb\_types.h - Common types
-- OdinWiFiInterface.h - C++ interface
 
 Note that either the C API or the C++ API can be used in an application. They should not be mixed in an application.
 
