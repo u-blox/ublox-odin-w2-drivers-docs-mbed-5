@@ -5,6 +5,8 @@ The Wi-Fi support conforms to IEEE 802.11a/b/g/n and has dual-band 2.4 GHz and 5
 
 The Wi-Fi driver is typically used together with a TCP/IP stack. For mbed OS 5 the Wi-Fi driver uses the included IP-stack.
 
+The following chapters describes the usage with the C API. For the C++ API see header files and [example](https://github.com/ARMmbed/mbed-os-example-wifi) in mbed-os.
+
 ## General initialization
 The Wi-Fi driver is initialized with a call to cbMAIN\_initWlan. Note that cbWLAN\_init must not be called since this is done from inside cbMAIN\_initWlan.
 
@@ -21,14 +23,5 @@ The station mode is entered by calling any of the cbWLAN\_connectXXX functions. 
 
 Although a scan is not necessary prior to a connection establishment it might be required if full information about the access point is needed.
 
-The sequence diagram below shows a typical scenario from an uninitialized driver to sending some socket data via the lwIP stack.
-
-![](mbed_wifi_sequence.png)
-
 ## Access Point mode
 The access point mode is entered by calling any of the cbWLAN_apStart* functions. Whenever a connection is established an event cbWLAN_STATUS_AP_ADDED is received. A corresponding cbLWAN_STATUS_AP_REMOVED is called when the station disconnects.
-
-The sequence diagram below shows a typical scenario from an uninitialized driver to connected station.
-
-![](mbed_wifi_ap_sequence.png)
-
