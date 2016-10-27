@@ -3,7 +3,7 @@ The Wi-Fi driver provides functionality to initialize, configure and manage a Wi
 
 The Wi-Fi support conforms to IEEE 802.11a/b/g/n and has dual-band 2.4 GHz and 5GHz operation. The driver can either operate as a Station or an Access Point.
 
-The Wi-Fi driver is typically used together with a TCP/IP stack. For mbed OS 5 the Wi-Fi driver uses the included IP-stack.
+The Wi-Fi driver is typically used together with a TCP/IP stack. For mbed OS 5 the OdinWiFiInterface class uses the included IP-stack.
 
 The following chapters describes the usage with the C API. For the C++ API see header files and [example](https://github.com/ARMmbed/mbed-os-example-wifi) in mbed-os.
 
@@ -14,7 +14,7 @@ In order to get status updates it's necessary to register via the cbWLAN\_regist
 
 Once the driver has been initialized and a status handler been registered it can be started with cbMAIN\_startWlan. When starting is finished a status event/callback is received.
 
-If the driver is not intended to be in use any more it is wise to stop it with cbWLAN\_Stop to lower power consumption.
+If the driver is not intended to be in use any more it is wise to stop it with cbWLAN\_stop to lower power consumption.
 
 For the OdinWiFiInterface class all of the functions above is done in the constructor and destructor.
 
