@@ -6,7 +6,7 @@ The binary is intended for and can only be run on a u-blox ODIN-W2 module.
 
 Please note that this document is not intended as a complete system description. It is intended to be an overview and for details the header files must be used.
 
-There are two levels of the API, one C++ API and one lower level C API. It is highly recommended to use the C++ interface as this is the intended way ARM mbed should be used. The C API is only provided to be able to support the mbed C++ classes and might be used until such classes exist. Currently there is support for the Wi-Fi station via the OdinWiFiInterface class.
+There are two levels of the API, one C++ API and one lower level C API. It is highly recommended to use the C++ interface as this is the intended way ARM mbed should be used. The C API is provided to be able to support the mbed C++ classes and might be used by the application until such classes exist. Currently there is support for the Wi-Fi station via the OdinWiFiInterface class.
 
 If the C API is used please note that this interface is subject to change and it is highly recommended to migrate to the C++ API once it is available. The C API is considered as experimental.
 
