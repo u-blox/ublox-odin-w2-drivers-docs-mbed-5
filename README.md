@@ -6,7 +6,9 @@ The binary is intended for and can only be run on a u-blox ODIN-W2 module.
 
 Please note that this document is not intended as a complete system description. It is intended to be an overview and for details the header files must be used.
 
-**NOTE 1: Bluetooth low energy is currently only experimental.**
+There are two levels of the API, one C++ API and one lower level C API. It is highly recommended to use the C++ interface as this is the intended way ARM mbed should be used. The C API is provided to be able to support the mbed C++ classes and might be used by the application until such classes exist. Currently there is support for the Wi-Fi station via the OdinWiFiInterface class.
+
+If the C API is used please note that this interface is subject to change and it is highly recommended to migrate to the C++ API once it is available. The C API is considered as experimental.
 
 ## Related documents
 [https://www.u-blox.com/sites/default/files/ODIN-W2_DataSheet_%28UBX-14039949%29.pdf](https://www.u-blox.com/sites/default/files/ODIN-W2_DataSheet_%28UBX-14039949%29.pdf) - ODIN-W2 Data Sheet  
@@ -21,7 +23,7 @@ The drivers for the C API are not thread safe. This means that all calls to and 
 Notes:
 - The application entry point 'main()' does not run in the same context as the driver.
 - The OdinWiFiInterface class is already protected by the cbMAIN driver lock so these locks should not be used for this interface.
-- Callbacks for the Wi-Fi and Bluetooth C API are generally not re-entrant which means you need to defer any function calls inside the callbacks.
+- Callbacks for the Wi-Fi C API is not re-entrant which means which means you need to defer any function calls inside the callbacks.
 
 ![](documentation/mbed_odin_w2.png)
 
@@ -37,7 +39,7 @@ The exported components and corresponding files in the u-blox ODIN-W2 driver is 
 ### Bluetooth
 - **BT Manager**(cb\_bt\_man.h) - Bluetooth Generic Access Profile(GAP) functionality like inquiry, device name etc
 - **BT Connection Manager**(cb\_bt\_conn\_man.h) - Setting up and tearing down Bluetooth SPP/PAN/DUN connections
-- **BT Security Manager**(cb\_bt\_sec\_man.h) - Security manager that handles pairing and link keys. **NOTE, this API is subject to change in the near future.**
+- **BT Security Manager**(cb\_bt\_sec\_man.h) - Security manager that handles pairing and link keys.
 - **BT PAN**(cb\_bt\_pan.h) - Personal Area Network Profile(PAN) for sending Ethernet frames over Classic Bluetooth
 - **BT Serial**(cb\_bt\_serial.h) - Serial Port Profile(SPP) based on RFCOMM for sending and receiving transparent data. Also supports Dial-Up Network(DUN).
 - **BT Serial low energy**(cb\_bt\_serial\_le.h) - u-blox Serial Port Service for sending and receiving transparent data.
@@ -60,6 +62,8 @@ For more info about the Bluetooth components see [documentation/readme_bluetooth
 - cb\_types.h - Common types
 
 Note that either the C API or the C++ API can be used in an application. They should not be mixed in an application.
+
+The access point interface is not natively supported in mbed-os EMAC interface. However support for it is ongoing.
 
 For more info about the Wi-Fi component look [here](documentation/readme_wifi.md).
 
