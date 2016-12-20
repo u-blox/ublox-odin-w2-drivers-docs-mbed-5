@@ -1,6 +1,6 @@
 # u-blox ODIN-W2 Wi-Fi and Bluetooth drivers
 
-This is a pre-compiled binary module including u-blox Wi-Fi and Bluetooth [mbed OS](https://mbed.com).
+This is a pre-compiled binary module including u-blox Wi-Fi and Bluetooth drivers for [mbed OS](https://mbed.com).
 
 The binary is intended for and can only be run on a u-blox ODIN-W2 module.
 
@@ -23,7 +23,7 @@ The drivers for the C API are not thread safe. This means that all calls to and 
 Notes:
 - The application entry point 'main()' does not run in the same context as the driver.
 - The OdinWiFiInterface class is already protected by the cbMAIN driver lock so these locks should not be used for this interface.
-- Callbacks for the Wi-Fi C API is not re-entrant which means which means you need to defer any function calls inside the callbacks.
+- Callbacks for the Wi-Fi C API is not re-entrant which means you need to defer any function calls inside the callbacks.
 
 ![](documentation/mbed_odin_w2.png)
 
