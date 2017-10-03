@@ -1,12 +1,12 @@
 # u-blox ODIN-W2 Wi-Fi and Bluetooth drivers
 
-This is a pre-compiled binary module including u-blox Wi-Fi and Bluetooth drivers for [mbed OS](https://mbed.com).
+This is a pre-compiled binary module including u-blox Wi-Fi and Bluetooth drivers for [Arm Mbed OS](https://mbed.com).
 
 The binary is intended for and can only be run on a u-blox ODIN-W2 module.
 
 Please note that this document is not intended as a complete system description. It is intended to be an overview and for details the header files must be used.
 
-There are two levels of the API, one C++ API and one lower level C API. It is highly recommended to use the C++ interface as this is the intended way ARM mbed should be used. The C API is provided to be able to support the mbed C++ classes and might be used by the application until such classes exist. Currently there is support for the Wi-Fi station via the OdinWiFiInterface class.
+There are two levels of the API, one C++ API and one lower level C API. It is highly recommended to use the C++ interface as this is the intended way Arm Mbed should be used. The C API is provided to be able to support the Mbed C++ classes and might be used by the application until such classes exist. Currently there is support for the Wi-Fi station via the OdinWiFiInterface class.
 
 If the C API is used please note that this interface is subject to change and it is highly recommended to migrate to the C++ API once it is available. The C API is considered as experimental.
 
@@ -72,10 +72,10 @@ The IP stack used is provided by mbed-os and is accessible from the socket API.
 
 
 ### mbed OS
-This is the ARM mbed OS framework and is a collection of OS-related modules and includes the control of GPIOs, UART, SPI, I2C, security etc. A thorough description can be found [here](https://docs.mbed.com/docs/mbed-os-handbook/en/5.2/)
+This is the Arm Mbed OS framework and is a collection of OS-related modules and includes the control of GPIOs, UART, SPI, I2C, security etc. A thorough description can be found [here](https://docs.mbed.com/docs/mbed-os-handbook/en/5.2/)
 
 ### ST firmware library
-A subset of the functionality provided by the ST firmware library is accessible from mbed OS. If more control is needed it's also possible to access the drivers directly via the mbed-os lower layers. Note that it must be used with care since any misuse might break the driver and/or mbed OS.
+A subset of the functionality provided by the ST firmware library is accessible from Mbed OS. If more control is needed it's also possible to access the drivers directly via the mbed-os lower layers. Note that it must be used with care since any misuse might break the driver and/or Mbed OS.
 
 ## Qualification and approvals
 The module fulfills the ETSI regulations and modular approved for FCC and IC. It is also Bluetooth qualified as a Bluetooth controller subsystem. The embedded Bluetooth stack is pre-qualified as a Bluetooth host subsystem. This allows for customer specific Bluetooth applications developed directly for the STM32F439 microcontroller. For more info see Qualification and approvals chapter in [ODIN-W2 Data Sheet](https://www.u-blox.com/sites/default/files/ODIN-W2_DataSheet_%28UBX-14039949%29.pdf).
@@ -84,14 +84,14 @@ The module fulfills the ETSI regulations and modular approved for FCC and IC. It
 
 ![](documentation/mbed_odin_w2_flash.png)
 
-The flash memory configuration above shows how the utilization can look like when two 128k sectors are used as non-volatile storage of Bluetooth link keys. How much space the ARM mbed OS and ODIN-W2 drivers occupy is very dependent on how much functionality is used. Typically around 1MByte when only the Wi-Fi driver is being used.
+The flash memory configuration above shows how the utilization can look like when two 128k sectors are used as non-volatile storage of Bluetooth link keys. How much space the Arm Mbed OS and ODIN-W2 drivers occupy is very dependent on how much functionality is used. Typically around 1MByte when only the Wi-Fi driver is being used.
 
 No boot, starting at address 0, is used in this flash configuration as this is typically overwritten when using the ST-LINK mass storage flashing on the EVK-ODIN-W2.
 
 **NOTE 3: The One Time Programmable(OTP) area is reserved for the ODIN-W2 drivers and must not be written to. The OTP area keeps all the MAC addresses.**
 
 ## RAM
-The ODIN-W2 drivers use both static RAM and dynamically allocated heap memory via the mbed OS heap. The heap usage is heavily dependent on the use case.
+The ODIN-W2 drivers use both static RAM and dynamically allocated heap memory via the Mbed OS heap. The heap usage is heavily dependent on the use case.
 
 ## Hardware watchdog
 The hardware watchdog is neither initialized nor enabled by default but can be added via the cb_watchdog.h API.
@@ -106,11 +106,11 @@ Both the Bluetooth stack and the Wi-Fi driver use parts of the hardware. The tab
 |-----------------------|--------------------|--------------------------------------------------------------------------------------------------------------------|
 | GPIO                  | ODIN-W2            | Only IO pins that are included in the ODIN-W2 target can be used.                                                  |
 | System tick interrupt | ODIN-W2 timers/HAL | The system tick is used by the ODIN-W2 internal timer component and also by the ST firmware lib.                   |
-| TIM5                  | us_ticker          | Timer used by mbed OS                                                                     |
+| TIM5                  | us_ticker          | Timer used by Mbed OS                                                                     |
 | TIM3                  | ODIN-W2            | Used by the Bluetooth HCI UART                                                                                     |
 | DMA5, DMA6            | ODIN-W2            | DMA stream 5 and 6 are used by the Bluetooth HCI UART                                                              |
 | USART2                | ODIN-W2            | Used by the Bluetooth HCI UART                                                                                     |
 | IWDG                  | ODIN-W2            | The independent watchdog is setup using cbWD. Disabled by default. Can be emitted by not initializing the component. |
-| Ethernet              | ODIN-W2            | Handled by mbed OS                                                                                                 |
+| Ethernet              | ODIN-W2            | Handled by Mbed OS                                                                                                 |
 | SDIO                  | ODIN-W2            | Used by the Wi-Fi driver                                                                                           |
 | Flash memory          | ODIN-W2            | Bluetooth link keys are stored in the last two sectors. OTP is reserved for the ODIN-W2 drivers.                   |
