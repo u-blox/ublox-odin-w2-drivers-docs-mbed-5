@@ -25,6 +25,3 @@ Although a scan is not necessary prior to a connection establishment it might be
 
 ### 802.11r (over the DS) - pending in release mbed-os-5.9
 Roaming capability is always turned on while working in station mode. If an access point is 802.11r supported, connection between station and access point will be established using this feature by default. Connections with access points that do not support 802.11r will be established without using this roaming capability.
-
-## Access Point mode
-The access point mode is entered by calling any of the cbWLAN_apStart* functions. Whenever a connection is established an event cbWLAN_STATUS_AP_ADDED is received. A corresponding cbLWAN_STATUS_AP_REMOVED is called when the station disconnects.
