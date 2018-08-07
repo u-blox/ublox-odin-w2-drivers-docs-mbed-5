@@ -23,5 +23,10 @@ The station mode is entered by calling any of the cbWLAN\_connectXXX functions. 
 
 Although a scan is not necessary prior to a connection establishment it might be required if full information about the access point is needed.
 
-### 802.11r (over the DS) - pending in release mbed-os-5.9
+### 802.11r (over the DS/AIR)
 Roaming capability is always turned on while working in station mode. If an access point is 802.11r supported, connection between station and access point will be established using this feature by default. Connections with access points that do not support 802.11r will be established without using this roaming capability.
+
+## Acess Point
+
+The AP mode require macro DEVICE_WIFI_AP to be defined in mbed_app.json . To enter the AP mode by calling ap_start should be called. To stop the AP mode ap_stop needs to be called. 
+A public example for AP mode will soon be released. 
