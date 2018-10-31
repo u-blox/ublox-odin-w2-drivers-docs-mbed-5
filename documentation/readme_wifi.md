@@ -28,5 +28,5 @@ Roaming capability is always turned on while working in station mode. If an acce
 
 ## Acess Point (Pending release)
 
-The AP mode require macro DEVICE_WIFI_AP to be defined in mbed_app.json . To enter the AP mode by calling ap_start should be called. To stop the AP mode ap_stop needs to be called. 
-A public example for AP mode will soon be released. 
+The AP mode requires macro DEVICE_WIFI_AP to be defined in mbed_app.json . To enter AP mode ap_start should be called. To stop the AP mode ap_stop needs to be called.
+A public example for AP is available [here](https://os.mbed.com/teams/ublox/code/mbed-os-example-odinw2-wifi-ap/).
