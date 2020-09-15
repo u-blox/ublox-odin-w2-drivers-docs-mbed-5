@@ -1,3 +1,5 @@
+*Please note this repository is no longer maintained by u-blox.*
+
 # u-blox ODIN-W2 Wi-Fi and Bluetooth drivers
 
 This is a pre-compiled binary module including u-blox Wi-Fi and BLE hci drivers for [Arm Mbed OS](https://mbed.com).
